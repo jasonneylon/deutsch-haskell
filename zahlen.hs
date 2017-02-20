@@ -1,3 +1,9 @@
+module Zahlen
+(
+    numberToNummer
+)
+where
+
 numberToNummer :: Integer -> String
 numberToNummer i
     | i == 0 = "Null"
