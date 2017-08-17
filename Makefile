@@ -1,2 +1,2 @@
 all:
-	ghc --make zahlen.hs main.hs
+	ghc --make zahlen.hs convert-number.hs
