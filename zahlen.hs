@@ -24,7 +24,7 @@ numberToNummer i
     | i == 9 = "Neun"
     | i == 10 = "Zehn"
     | i == 11 = "Elf"
-    | i == 12 = "Zwelf"
+    | i == 12 = "Zwolf"
     | i < 20 = (numberUnderTwenty i)
     | i == 20 = "Zwanzig"
     | i == 30 = "Dreissig"
