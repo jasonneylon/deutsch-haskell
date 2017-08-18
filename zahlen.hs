@@ -5,7 +5,7 @@ module Zahlen
 )
 where
 
-allesNummer :: [String]
+
 allesNummer = map numberToNummer [1..]
 
 numberToNummer :: Integer -> String
@@ -36,12 +36,11 @@ numberToNummer i
     | i == 90 = "Neunzig"
     | i > 20 = (numberOverTwenty i)
     | otherwise = "Was?"
-    where dropFirstDigit i =  read $ tail $ show $ i :: Integer
-          takeFirstDigit i =  read $ (:[]) $ head $ show $ i :: Integer
-          takeLastDigits n i =  read $ reverse $ take n $ reverse $ show $ i :: Integer
-          thousands i = read $ reverse $ drop 3 $ reverse $ show $ i :: Integer
+    where readInt i = read i :: Integer 
+          takeLastDigits n i =  readInt $ reverse $ take n $ reverse $ show $ i
+          dropLastDigits n i = readInt $ reverse $ drop n $ reverse $ show $ i 
           decade i = i - (i `mod` 10)
-          numberUnderTwenty i = numberToNummer (dropFirstDigit i) ++ "zehn"
-          numberOverTwenty i = numberToNummer (dropFirstDigit i) ++ "und" ++ numberToNummer (decade i)
-          numberOverHundred i = numberToNummer (takeFirstDigit i) ++ "hundert" ++ numberToNummer (takeLastDigits 2 i) 
-          numberOverThousand i = numberToNummer (thousands i) ++ "tausend" ++ numberToNummer (takeLastDigits 3 i) 
+          numberUnderTwenty i = numberToNummer (takeLastDigits 1 i) ++ "zehn"
+          numberOverTwenty i = numberToNummer (takeLastDigits 1 i) ++ "und" ++ numberToNummer (decade i)
+          numberOverHundred i = numberToNummer (dropLastDigits 2 i) ++ "hundert" ++ numberToNummer (takeLastDigits 2 i) 
+          numberOverThousand i = numberToNummer (dropLastDigits 3 i) ++ "tausend" ++ numberToNummer (takeLastDigits 3 i) 
