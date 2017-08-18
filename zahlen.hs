@@ -37,8 +37,8 @@ numberToNummer i
     | i > 20 = (numberOverTwenty i)
     | otherwise = "Was?"
     where readInt i = read i :: Integer 
-          takeLastDigits n i =  readInt $ reverse $ take n $ reverse $ show $ i
-          dropLastDigits n i = readInt $ reverse $ drop n $ reverse $ show $ i 
+          takeLastDigits n i =  readInt . reverse . take n . reverse $ show i
+          dropLastDigits n i = readInt . reverse . drop n . reverse $ show i 
           decade i = i - (i `mod` 10)
           numberUnderTwenty i = numberToNummer (takeLastDigits 1 i) ++ "zehn"
           numberOverTwenty i = numberToNummer (takeLastDigits 1 i) ++ "und" ++ numberToNummer (decade i)
