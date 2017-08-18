@@ -5,7 +5,7 @@ module Zahlen
 )
 where
 
-
+allesNummer :: [String]
 allesNummer = map numberToNummer [1..]
 
 numberToNummer :: Integer -> String
